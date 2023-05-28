@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>期约</title>
+</head>
+<body>
+  <div>1212</div>
+</body>
+<script>
+  function handleError(e){
+    throw Error('NetWork: ', e)
+  }
+
+  fetch('https://api.thecatapi.com/v1/images/search?limit=1', { method: 'get'})
+  .then(response => {
+    if(!response.ok){
+      return new Error("NetWork Error...")
+    }
+    return response.json()
+  })
+  .then(data => {
+    console.log(data)
+  }, e => handleError(e))
+
+</script>
+</html>
+
+
