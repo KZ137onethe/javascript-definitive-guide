@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>时钟表盘</title>
+  <style>
+    #clock{
+      stroke: black;
+      stroke-linecap: round;
+      fill: #ffe;
+    }
+
+    #clock .face{
+      stroke-width: 3;
+    }
+
+    #clock .ticks{
+      stroke-width: 2;
+    }
+
+    #clock .hands{
+      stroke-width: 3;
+    }
+
+    #clock .numbers{
+      font-family: sans-serif;
+      font-size: x-small;
+      font-weight: 700;
+      text-anchor: middle;
+      stroke: none;
+      fill: black;
+    }
+  </style>
+</head>
+<body>
+  <svg id="clock" viewBox="0 0 100 100" width="250" height="250">
+    <circle class="face" cx="50" cy="50" r="45" />
+    <g class="ticks"> <!-- 12小时的刻度线 -->
+      <line x1="50" y1="5" x2="50" y2="10"></line>
+      <line x1="72.5" y1="11.03" x2="70" y2="15.36"></line>
+      <line x1="88.97" y1="27.5" x2="84.64" y2="30"></line>
+      <line x1="95.00" y1="50" x2="90" y2="50"></line>
+      <line x1="88.97" y1="72.5" x2="84.64" y2="70"></line>
+      <line x1="72.5" y1="88.97" x2="70" y2="84.64"></line>
+      <line x1="50" y1="95" x2="50" y2="90"></line>
+      <line x1="27.5" y1="88.97" x2="30" y2="84.64"></line>
+      <line x1="11.03" y1="72.5" x2="15.36" y2="70"></line>
+      <line x1="5" y1="50" x2="10" y2="50"></line>
+      <line x1="11.03" y1="27.5" x2="15.36" y2="30"></line>
+      <line x1="27.5" y1="11.03" x2="30" y2="15.36"></line>
+    </g>
+    <!-- 用数字标识方向 -->
+    <g class="numbers">
+      <text x="50" y="18">12</text><text x="85" y="53">3</text>
+      <text x="50" y="88">6</text><text x="15" y="53">9</text>
+    </g>
+    <!-- 绘制一个指向上方的表针 -->
+    <g class="hands">
+      <line class="hourhand" x1="50" y1="50" x2="50" y2="25"></line>
+      <line class="minutehand" x1="50" y1="50" x2="50" y2="20"></line>
+    </g>
+  </svg>
+</body>
+<script src="./控制svg来模拟时针.js"></script>
+</html>

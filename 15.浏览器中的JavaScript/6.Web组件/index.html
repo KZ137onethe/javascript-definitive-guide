@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web组件</title>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    search-box:not(:defined){
+      opacity: 0;
+      display: inline-block;
+      width: 300px;
+      height: 50px;
+      outline: 1px solid goldenrod;
+    }
+
+    footer{
+      position: fixed;
+      bottom: 10px;
+      left: 0;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <search-box></search-box>
+  <p>
+    The document has one marble: <inline-circle></inline-circle>.
+    <br>
+    The HTML parser instances two more marbles:
+    <inline-circle diameter="1.2rem" color="skyblue"></inline-circle>
+    <inline-circle diameter=".6rem" color="gold"></inline-circle>
+    <br>
+    How many marbles does the document contain now?
+  </p>
+  <template id="random">
+    <header><b>随机数</b></header>
+    <span class="random-number"></span>
+  </template>
+  <footer>
+    示例：Web组件
+  </footer>
+</body>
+<script src="./inline-circle.js"></script>
+<script src="./影子DOM实践.js"></script>
+<script>
+  let boxElement = document.querySelector('.box')
+  let randomTemplate = document.querySelector("#random");
+  let randomNumber = document.querySelector('.random-number')
+  console.log(randomNumber);
+  randomNumber && (randomNumber.innerHTML = Math.ceil(Math.random() * 10))
+  let cloneRandom = randomTemplate.content.cloneNode(true);
+  let randomBox = document.createElement('div');
+  randomBox.append(cloneRandom);
+  boxElement && boxElement.append(randomBox)
+</script>
+</html>
